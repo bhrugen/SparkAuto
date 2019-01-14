@@ -44,7 +44,20 @@
                     <td>
                         @Html.DisplayFor(m => item.Price)
                     </td>
-                    <td></td>
+                    <td style="width:150px;">
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-primary text-white" asp-page="Edit" asp-route-Id="@item.Id">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a class="btn btn-success text-white" asp-page="Details" asp-route-Id="@item.Id">
+                                <i class="far fa-list-alt"></i>
+                            </a>
+                            <a class="btn btn-danger text-white" asp-page="Delete" asp-route-Id="@item.Id">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </div>
+
+                    </td>
                 </tr>
                 }
             </table>
