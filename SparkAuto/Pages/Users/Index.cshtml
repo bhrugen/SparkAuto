@@ -5,5 +5,59 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<form>
+    <br /><br />
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-info">Customers List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-page="/Account/Register" asp-area="Identity" class="btn btn-info">
+                <i class="fas fa-plus"></i>&nbsp; Create New Customer
+            </a>
+        </div>
+    </div>
 
+    <div class="border backgroundWhite">
+
+        <br />
+        <div>
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        @Html.DisplayNameFor(m => m.ApplicationUserList[0].Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.ApplicationUserList[0].PhoneNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.ApplicationUserList[0].Email)
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach(var item in Model.ApplicationUserList)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Email)
+                    </td>
+                    <td>
+                        <a class="btn btn-primary text-white" asp-page="Edit" asp-route-Id="@item.Id">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="btn btn-danger text-white" asp-page="Delete" asp-route-Id="@item.Id">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+                }
+            </table>
+        </div>
+    </div>
+</form>
