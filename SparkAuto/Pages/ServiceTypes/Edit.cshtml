@@ -6,35 +6,38 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>ServiceType</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ServiceType.Id" />
-            <div class="form-group">
-                <label asp-for="ServiceType.Name" class="control-label"></label>
+<br />
+<h2 class="text-info">Edit Service Type</h2>
+<br />
+<form method="post">
+    <div class="border backgroundWhite">
+        <input type="hidden" asp-for="ServiceType.Id" />
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="ServiceType.Name"></label>
+            </div>
+            <div class="col-5">
                 <input asp-for="ServiceType.Name" class="form-control" />
-                <span asp-validation-for="ServiceType.Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ServiceType.Price" class="control-label"></label>
+            <span asp-validation-for="ServiceType.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="ServiceType.Price"></label>
+            </div>
+            <div class="col-5">
                 <input asp-for="ServiceType.Price" class="form-control" />
-                <span asp-validation-for="ServiceType.Price" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <span asp-validation-for="ServiceType.Price" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_EditAndBackToListButton" />
             </div>
-        </form>
+        </div>
     </div>
-</div>
+</form>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
