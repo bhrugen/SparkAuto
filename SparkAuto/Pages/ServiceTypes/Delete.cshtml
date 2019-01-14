@@ -1,0 +1,40 @@
+﻿@page
+@model SparkAuto.Pages.ServiceTypes.DeleteModel
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info">Delete Service Type</h2>
+<br />
+<form method="post">
+    <input asp-for="ServiceType.Id" hidden />
+    <div class=" border  backgroundWhite">
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="ServiceType.Name"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="ServiceType.Name" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="ServiceType.Price"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="ServiceType.Price" disabled class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_DeleteAndBackToListButton" />
+
+            </div>
+        </div>
+    </div>
+</form>
+
+
