@@ -1,0 +1,108 @@
+﻿@page
+@model SparkAuto.Pages.Users.EditModel
+
+<br />
+<h2 class="text-info">Edit Customer</h2>
+<br />
+<form method="post">
+    <div class=" border  backgroundWhite">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input asp-for="ApplicationUser.Id" hidden />
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="ApplicationUser.Name" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="ApplicationUser.Name" class="form-control" />
+                </div>
+            </div>
+            <span asp-validation-for="ApplicationUser.Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="ApplicationUser.Email" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="ApplicationUser.Email" class="form-control" />
+                </div>
+            </div>
+            <span asp-validation-for="ApplicationUser.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="ApplicationUser.PhoneNumber" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="ApplicationUser.PhoneNumber" class="form-control" />
+                </div>
+            </div>
+            <span asp-validation-for="ApplicationUser.PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="ApplicationUser.Address" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="ApplicationUser.Address" class="form-control" />
+                </div>
+            </div>
+            <span asp-validation-for="ApplicationUser.Address" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="ApplicationUser.City" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="ApplicationUser.City" class="form-control" />
+                </div>
+            </div>
+            <span asp-validation-for="ApplicationUser.City" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="ApplicationUser.PostalCode" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="ApplicationUser.PostalCode" class="form-control" />
+                </div>
+            </div>
+            <span asp-validation-for="ApplicationUser.PostalCode" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_EditAndBackToListButton" />
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
