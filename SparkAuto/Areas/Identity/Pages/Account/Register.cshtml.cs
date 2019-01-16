@@ -98,6 +98,12 @@ namespace SparkAuto.Areas.Identity.Pages.Account
                     PostalCode=Input.PostalCode,
                     PhoneNumber=Input.PhoneNumber
                 };
+
+                if(!Input.IsAdmin)
+                {
+                    user.EmailConfirmed = true;
+                }
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
