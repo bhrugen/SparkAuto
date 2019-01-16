@@ -12,6 +12,7 @@ using SparkAuto.Utility;
 
 namespace SparkAuto.Pages.Users
 {
+    [Authorize(Roles = SD.AdminEndUser)]
     public class EditModel : PageModel
     {
         private readonly ApplicationDbContext _db;
