@@ -1,5 +1,6 @@
 ﻿@page
 @model RegisterModel
+@using SparkAuto.Utility
 @{
     ViewData["Title"] = "Register";
 }
@@ -106,6 +107,21 @@
                 </div>
 
             </div>
+
+
+            @if (User.IsInRole(SD.AdminEndUser))
+            {
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-4">
+                        <label asp-for="Input.IsAdmin"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Input.IsAdmin" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            }
             <div class="form-group">
                 <div class="row">
                     <div class="col-4">
