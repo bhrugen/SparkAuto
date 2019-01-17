@@ -17,6 +17,8 @@ namespace SparkAuto.Pages.Cars
         [BindProperty]
         public Car Car { get; set; }
 
+        [TempData]
+        public string StatusMessage { get; set; }
 
         public CreateModel(ApplicationDbContext db)
         {
@@ -38,15 +40,15 @@ namespace SparkAuto.Pages.Cars
 
         public async Task<IActionResult> OnPostAsync()
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return Page();
-            //}
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
 
-            //_db.ServiceType.Add(ServiceType);
-            //await _db.SaveChangesAsync();
-
-            return RedirectToPage("Index");
+            _db.Car.Add(Car);
+            await _db.SaveChangesAsync();
+            StatusMessage = "Car has been added sucessfully.";
+            return RedirectToPage("Index", new { userId = Car.UserId });
         }
 
     }
