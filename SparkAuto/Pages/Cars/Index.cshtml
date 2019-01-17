@@ -1,9 +1,37 @@
 ﻿@page
 @model SparkAuto.Pages.Cars.IndexModel
+@using SparkAuto.Utility
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h2 class="text-info py-2">Car Record For Customer</h2>
+
+<div class="container backgroundWhite">
+    <div class="card">
+        <div class="card-header bg-dark text-light ml-0 row container">
+            <div class="col-6">
+                <i class="fas fa-car"></i>
+            </div>
+            <div class="col-6 text-right">
+                @if(User.IsInRole(SD.AdminEndUser))
+                {
+                    <a asp-page="/Users/Index" class="btn btn-outline-info btn-sm">Back to Users</a>
+                }
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row" style="padding-bottom:40px; padding-top:20px;">
+                <div class="col-md-3">
+                    <p>
+                        <a asp-page="Create" asp-route-userId="@Model.CarAndCustVM.UserObj.Id" class="btn btn-info form-control">
+<i class="fas fa-plus"></i> &nbsp; Add New Car
+</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
