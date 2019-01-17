@@ -4,8 +4,8 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
-<h4>Associate your @Model.LoginProvider account.</h4>
+<h2 class="text-info">@ViewData["Title"]</h2>
+<h4 class="text-info">Associate your @Model.LoginProvider account.</h4>
 <hr />
 
 <p class="text-info">
@@ -15,15 +15,15 @@
 </p>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12 border backgroundWhite">
         <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-2">
                         <label asp-for="Input.Name"></label>
                     </div>
-                    <div class="col-8">
+                    <div class="col-5">
                         <input asp-for="Input.Name" class="form-control" />
                     </div>
                     <span asp-validation-for="Input.Name" class="text-danger"></span>
@@ -31,10 +31,10 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-2">
                         <label asp-for="Input.Email"></label>
                     </div>
-                    <div class="col-8">
+                    <div class="col-5">
                         <input asp-for="Input.Email" class="form-control" />
                     </div>
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
@@ -43,10 +43,10 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-2">
                         <label asp-for="Input.PhoneNumber"></label>
                     </div>
-                    <div class="col-8">
+                    <div class="col-5">
                         <input asp-for="Input.PhoneNumber" class="form-control" />
                     </div>
                     <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
@@ -55,10 +55,10 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-2">
                         <label asp-for="Input.Address"></label>
                     </div>
-                    <div class="col-8">
+                    <div class="col-5">
                         <input asp-for="Input.Address" class="form-control" />
                     </div>
                     <span asp-validation-for="Input.Address" class="text-danger"></span>
@@ -67,10 +67,10 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-2">
                         <label asp-for="Input.City"></label>
                     </div>
-                    <div class="col-8">
+                    <div class="col-5">
                         <input asp-for="Input.City" class="form-control" />
                     </div>
                     <span asp-validation-for="Input.City" class="text-danger"></span>
@@ -79,10 +79,10 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-2">
                         <label asp-for="Input.PostalCode"></label>
                     </div>
-                    <div class="col-8">
+                    <div class="col-5">
                         <input asp-for="Input.PostalCode" class="form-control" />
                     </div>
                     <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
@@ -91,9 +91,9 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-2">
                     </div>
-                    <div class="col-8">
+                    <div class="col-5">
                         <button type="submit" class="btn btn-success form-control">Register</button>
                     </div>
                 </div>
