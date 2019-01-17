@@ -15,7 +15,7 @@
                 <i class="fas fa-car"></i>
             </div>
             <div class="col-6 text-right">
-                @if(User.IsInRole(SD.AdminEndUser))
+                @if (User.IsInRole(SD.AdminEndUser))
                 {
                     <a asp-page="/Users/Index" class="btn btn-outline-info btn-sm">Back to Users</a>
                 }
@@ -26,11 +26,95 @@
                 <div class="col-md-3">
                     <p>
                         <a asp-page="Create" asp-route-userId="@Model.CarAndCustVM.UserObj.Id" class="btn btn-info form-control">
-<i class="fas fa-plus"></i> &nbsp; Add New Car
-</a>
+                            <i class="fas fa-plus"></i> &nbsp; Add New Car
+                        </a>
                     </p>
                 </div>
+                <div class="col-md-6 offset-md-3">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label asp-for="CarAndCustVM.UserObj.Name"></label>
+                        </div>
+                        <div class="col-sm-8" style="padding-bottom:5px;">
+                            <input asp-for="CarAndCustVM.UserObj.Name" disabled class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label asp-for="CarAndCustVM.UserObj.PhoneNumber"></label>
+                        </div>
+                        <div class="col-sm-8" style="padding-bottom:5px;">
+                            <input asp-for="CarAndCustVM.UserObj.PhoneNumber" disabled class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-bottom:5px;">
+                            <label asp-for="CarAndCustVM.UserObj.Email"></label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input asp-for="CarAndCustVM.UserObj.Email" disabled class="form-control" />
+                        </div>
+                    </div>
+                </div>
             </div>
+            @if (Model.CarAndCustVM.Cars.Count() == 0)
+            {
+                <p>
+                    No Car Found! Please add a car...
+                </p>
+            }
+            else
+            {
+                <table class="table table-striped border">
+                    <tr class="table-secondary">
+                        <th>
+                            @Html.DisplayNameFor(m => m.CarAndCustVM.Cars.FirstOrDefault().VIN)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.CarAndCustVM.Cars.FirstOrDefault().Make)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.CarAndCustVM.Cars.FirstOrDefault().Model)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.CarAndCustVM.Cars.FirstOrDefault().Color)
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model.CarAndCustVM.Cars)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.VIN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Make)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Model)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Color)
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-primary text-white" asp-page="Edit" asp-route-Id="@item.Id">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                  <a class="btn btn-danger text-white" asp-page="Delete" asp-route-Id="@item.Id">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+
+                        </td>
+                    </tr>
+                    }
+                </table>
+            }
         </div>
     </div>
 </div>
