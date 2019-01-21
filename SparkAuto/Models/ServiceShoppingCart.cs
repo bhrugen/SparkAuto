@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SparkAuto.Models
 {
-    public class ServcieShoppingCart
+    public class ServiceShoppingCart
     {
         public int Id { get; set; }
         public int CarId { get; set; }
