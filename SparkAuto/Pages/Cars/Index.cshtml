@@ -81,9 +81,12 @@
                             @Html.DisplayNameFor(m => m.CarAndCustVM.Cars.FirstOrDefault().Color)
                         </th>
                         <th></th>
+                        @if (User.IsInRole(SD.AdminEndUser))
+                        {
+                            <th></th>
+                        }
                         <th></th>
-                        <th></th>
-                    </tr>
+                        </tr>
                     @foreach (var item in Model.CarAndCustVM.Cars)
                     {
                     <tr>
@@ -99,14 +102,25 @@
                         <td>
                             @Html.DisplayFor(m => item.Color)
                         </td>
-                        <td></td>
-                        <td></td>
+                        <td>
+                            <a class="btn btn-secondary" asp-page="../Services/History" asp-route-carId="@item.Id">
+                               <i class="fas fa-wrench"></i> &nbsp; Service History
+                            </a>
+                        </td>
+                        @if (User.IsInRole(SD.AdminEndUser))
+                        {
+                        <td>
+                            <a class="btn btn-success" asp-page="../Services/Create" asp-route-carId="@item.Id">
+                                <i class="fas fa-plus"></i> &nbsp; New Service
+                            </a>
+                        </td>
+                        }
                         <td>
                             <div class="btn-group" role="group">
                                 <a class="btn btn-primary text-white" asp-page="Edit" asp-route-Id="@item.Id">
                                     <i class="fas fa-edit"></i>
-                                </a>
-                                  <a class="btn btn-danger text-white" asp-page="Delete" asp-route-Id="@item.Id">
+                                </a> &nbsp;&nbsp;
+                                <a class="btn btn-danger text-white" asp-page="Delete" asp-route-Id="@item.Id">
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
                             </div>
