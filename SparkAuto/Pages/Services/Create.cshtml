@@ -5,5 +5,71 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+
+<div class="container pt-4 pb-2 row">
+    <div class="col-6">
+        <h2 class="text-info py-2">Create New Service</h2>
+    </div>
+    <div class="col-3 offset-3 text-right py-2">
+        <a asp-page="../Cars/Index" asp-route-userId="@Model.CarServiceVM.Car.UserId" class="btn btn-outline-success form-control"> Back to List</a>
+    </div>
+</div>
+
+
+
+<div class="container backgroundWhite">
+    <div class="card">
+        <div class="card-header bg-dark text-light ml-0 row container">
+            <div class="col-1 text-center pt-3 text-white-50 ">
+                <i class="far fa-user fa-2x"></i>
+            </div>
+            <div class="col-5">
+                <label class="text-info">@Model.CarServiceVM.Car.ApplicationUser.Name</label><br />
+                <label class="text-info">@Model.CarServiceVM.Car.ApplicationUser.Email / @Model.CarServiceVM.Car.ApplicationUser.PhoneNumber</label><br />
+
+            </div>
+
+            <div class="col-5 text-right">
+                <label class="text-info">@Model.CarServiceVM.Car.Make @Model.CarServiceVM.Car.Model @Model.CarServiceVM.Car.Style</label><br />
+                <label class="text-info">@Model.CarServiceVM.Car.Year </label>
+            </div>
+            <div class="col-1 text-center pt-3 text-white-50 ">
+                <i class="fas fa-car fa-2x"></i>
+            </div>
+        </div>
+        <div class="card-body">
+            <form method="post" style="width:100%">
+                <div class="container">
+                    <input hidden asp-for="CarServiceVM.Car.Make" />
+                    <input hidden asp-for="CarServiceVM.Car.Model" />
+                    <input hidden asp-for="CarServiceVM.Car.VIN" />
+                    <input hidden asp-for="CarServiceVM.Car.UserId" />
+                    <input hidden asp-for="CarServiceVM.Car.Id" />
+
+                    <div class="border rounded p-2">
+                        <div class="row">
+                            <div class="col-3">
+                                <h4 class="text-info pl-3 pt-2 pb-1">Add Service</h4>
+                            </div>
+                            <div class="col-9 pb-1 pt-2">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <select asp-for="CarServiceVM.ServiceDetails.ServiceTypeId"
+                                                asp-items="@(new SelectList(Model.CarServiceVM.ServiceTypesList,"Id","Name"))"
+                                                class="form-control"></select>
+                                    </div>
+                                    <div class="col-4">
+                                        <button type="submit" asp-page-handler="AddToCart" class="form-control btn btn-primary">
+                                            Add
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
