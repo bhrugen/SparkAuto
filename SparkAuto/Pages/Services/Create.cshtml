@@ -152,3 +152,22 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        function validateInput() {
+            var miles = document.getElementById("txtMiles").value;
+
+            if (miles < 1) {
+                swal("Error!","Miles cannot be empty or 0","error");
+                return false;
+            }
+
+        }
+    </script>
+
+}
