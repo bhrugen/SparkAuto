@@ -58,6 +58,43 @@ namespace SparkAuto.Pages.Services
 
         }
 
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if(ModelState.IsValid)
+            {
+                CarServiceVM.ServiceHeader.DateAdded = DateTime.Now;
+                CarServiceVM.ServiceShoppingCart = _db.ServiceShoppingCart.Include(c => c.ServiceType).ToList();
+                foreach(var item in CarServiceVM.ServiceShoppingCart)
+                {
+                    CarServiceVM.ServiceHeader.TotalPrice += item.ServiceType.Price;
+                }
+                CarServiceVM.ServiceHeader.CarId = CarServiceVM.Car.Id;
+
+                _db.ServiceHeader.Add(CarServiceVM.ServiceHeader);
+                await _db.SaveChangesAsync();
+
+                foreach(var detail in CarServiceVM.ServiceShoppingCart)
+                {
+                    ServiceDetails serviceDetails = new ServiceDetails
+                    {
+                        ServiceHeaderId = CarServiceVM.ServiceHeader.Id,
+                        ServiceName = detail.ServiceType.Name,
+                        ServicePrice = detail.ServiceType.Price,
+                        ServiceTypeId = detail.ServiceTypeId
+                    };
+
+                    _db.ServiceDetails.Add(serviceDetails);
+                    
+                }
+                _db.ServiceShoppingCart.RemoveRange(CarServiceVM.ServiceShoppingCart);
+
+                await _db.SaveChangesAsync();
+
+                return RedirectToPage("../Cars/Index", new { userId = CarServiceVM.Car.UserId });
+            }
+
+            return Page();
+        }
 
         public async Task<IActionResult> OnPostAddToCart()
         {
