@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SparkAuto.Data
 {
-    interface IDbInitializer
+    public interface IDbInitializer
     {
         void Initialize();
     }
